@@ -1,12 +1,12 @@
-def countLeadingZeros(aFloat, length):
+def countLeadingZeros(aFloat):
     import math
     
-    if (math.modf(aFloat)[1] != 0) or (length == 1) :
+    if math.modf(aFloat)[1] != 0:
         aCounter = -1 
         return aCounter
 
     else:
-        aCounter = countLeadingZeros(aFloat * 10, length)
+        aCounter = countLeadingZeros(aFloat * 10)
         aCounter += 1
     return aCounter
     
@@ -43,11 +43,8 @@ def reverse(aNumber):
     #before reverse is called
     zerosToAdd = 0
     if (decimalPart * 10) < 1:
-        zerosToAdd = countLeadingZeros(decimalPart, length)
+        zerosToAdd = countLeadingZeros(decimalPart)
         print ("firstDigit is", firstDigit)
-
-    if decimalPart == 0.0:
-        return returnedNumber * 10
 
     # save the int for when the recursive call of reverser returns
     # return the decimal part of modf to an int
@@ -65,7 +62,7 @@ def reverse(aNumber):
 
 print(reverse(1234))#, 4321)
 print(reverse(12045))#, 78901)
-print(reverse(1020))#, 201)
+#print(reverse(1020))#, 201)
 
 """     if zerosToAdd != 0:
         returnedNumber * (10**zerosToAdd) """
