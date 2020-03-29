@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 def count_leading_zeros(a_float, length, count_leading_zeros_calls = 0):
   
     count_leading_zeros_calls += 1
@@ -19,6 +20,22 @@ def count_leading_zeros(a_float, length, count_leading_zeros_calls = 0):
 def reverse(a_number, count_reverse_calls = 0):
     count_reverse_calls += 1
     #print("a_number is ", a_number)
+=======
+def countLeadingZeros(aFloat):
+    import math
+    
+    if math.modf(aFloat)[1] != 0:
+        aCounter = -1 
+        return aCounter
+
+    else:
+        aCounter = countLeadingZeros(aFloat * 10)
+        aCounter += 1
+    return aCounter
+    
+def reverse(aNumber):
+    print("aNumber is ", aNumber)
+>>>>>>> parent of d63ec9b... runs but 1020 returns 201
     
     """Returns a_number with all digits reversed. Assume positive a_number."""
   
@@ -63,8 +80,34 @@ for i in range (10):
   numb = random.randrange(1000, 1000000000)
   print(i, "  for the number  ", numb, ", the reverse is ", reverse(numb))
 
+<<<<<<< HEAD
   #did not work for some test cases:
   #print(reverse(6003891)) #1083006.0 is the wrong ans i received before
   #print(reverse(78220351)) #6302287 is the wrong ans i received before
   #print(reverse(384427106)) #7724483.000000001 is the wrong ans i received before
   """
+=======
+    firstDigit = math.modf(aNumber / (10**length))[1]
+    print("firstDigit is " , firstDigit)
+    decimalPart = math.modf(aNumber / (10**length))[0]
+    print("decimalPart is ", decimalPart)
+
+    zerosToAdd = 0
+    if (decimalPart * 10) < 1:
+        zerosToAdd = countLeadingZeros(decimalPart)
+        print ("firstDigit is", firstDigit)
+
+    returnedNumber = reverse(round(decimalPart, length)* (10**(length)))
+    if zerosToAdd != 0:
+        returnedNumber = (returnedNumber * (10**zerosToAdd))
+    print("retirned number is ", returnedNumber)
+
+    return ((returnedNumber * 10) +firstDigit)
+
+#print(reverse(1234))#, 4321)
+#print(reverse(12045))#, 78901)
+print(reverse(1020))#, 201)
+
+"""     if zerosToAdd != 0:
+        returnedNumber * (10**zerosToAdd) """
+>>>>>>> parent of d63ec9b... runs but 1020 returns 201
