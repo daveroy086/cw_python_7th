@@ -1,62 +1,70 @@
-def countLeadingZeros(aFloat, length):
-
-    import math
+def count_leading_zeros(a_float, length, count_leading_zeros_calls = 0):
+  
+    count_leading_zeros_calls += 1
+  
+    import math    
     
-    if (math.modf(aFloat)[1] != 0) or (length <= 2):
-        print("math.modf(aFloat)[1] is ", math.modf(aFloat)[1], " and length is ", length)
-        aCounter = -1 
-        return aCounter
-
+    if (math.modf(a_float)[1] != 0) and (count_leading_zeros_calls < original_length):
+        print("math.modf(a_float)[1] is ", math.modf(a_float)[1], " and length is ", length)
+        a_counter = -1 
+        return a_counter
+  
     #gives all correct answers but line 12 still gives infinite loop online
     # try wrapping line 12 in an if with length conditional 
     else:
-        aCounter = countLeadingZeros(aFloat * 10, length)
-        aCounter += 1
-    return aCounter
+        a_counter = count_leading_zeros(a_float * 10, length, count_leading_zeros_calls)
+        a_counter += 1
+    return a_counter
+  
+def reverse(a_number, count_reverse_calls = 0):
+    count_reverse_calls += 1
+    #print("a_number is ", a_number)
     
-def reverse(aNumber):
-    #print("aNumber is ", aNumber)
-    
-    """Returns aNumber with all digits reversed. Assume positive aNumber."""
-
-    getANumberLength = aNumber
+    """Returns a_number with all digits reversed. Assume positive a_number."""
+  
+    get_a_number_length = a_number
     length = 0
-    while getANumberLength > 10 :
-        getANumberLength  = getANumberLength / 10
+    original_length = 0
+    while get_a_number_length > 10 :
+        get_a_number_length  = get_a_number_length / 10
         length += 1
-
+  
+    if count_reverse_calls == 1:
+        original_length = original_length
     if length < 1: 
-        return aNumber
-
+        return a_number
+  
     import math
-
-    firstDigit = math.modf(aNumber / (10**length))[1]
-    decimalPart = math.modf(aNumber / (10**length))[0]
-
-    zerosToAdd = 0
-    if (decimalPart * 10) < 1:
-        zerosToAdd = countLeadingZeros(decimalPart, length)
-
-    returnedNumber = reverse(round(decimalPart, length)* (10**(length)))
-    if zerosToAdd != 0:
-        returnedNumber = (returnedNumber * (10**zerosToAdd - 1))
-
-    iReturn = int((returnedNumber * 10) +firstDigit)
-    #print("iReturn is ", iReturn)
-    return iReturn
-
-#print(reverse(1234))#, 4321)
-#print(reverse(12045))#, 78901)
+  
+    first_digit = math.modf(a_number / (10**length))[1]
+    decimal_part = math.modf(a_number / (10**length))[0]
+  
+    zeros_to_add = 0
+    if (decimal_part * 10) < 1:
+        zeros_to_add = count_leading_zeros(decimal_part, length, original_length)
+  
+    returned_number = reverse(round(decimal_part, length), count_reverse_calls) * (10**length)
+    if zeros_to_add != 0:
+        returned_number = (returned_number * (10**zeros_to_add - 1))
+  
+    i_return = int((returned_number * 10) +first_digit)
+    #print("i_return is ", i_return)
+    return i_return
+  
+print(reverse(1234))#, 4321)
+"""print(reverse(12045))#, 78901)
 print(" the ans is ", reverse(1020))#, 201)
-#print(reverse(1001))#, 1001)
-#print(reverse(1010))#, he says 101 is ok)
-""" 
+print(reverse(1001))#, 1001)
+print(reverse(1010))#, he says 101 is ok)
+"""
+"""
 import random
 for i in range (10):
-    numb = random.randrange(1000, 1000000000)
-    print(i, "  for the number  ", numb, ", the reverse is ", reverse(numb))
- """
-    #did not work for some test cases:
-    #for the number   6003891 , it returned  1083006.0
-    #for the number   78220351 , it returned  6302287.0
-    #for the number   384427106 , it returned 7724483.000000001
+  numb = random.randrange(1000, 1000000000)
+  print(i, "  for the number  ", numb, ", the reverse is ", reverse(numb))
+
+  #did not work for some test cases:
+  #print(reverse(6003891)) #1083006.0 is the wrong ans i received before
+  #print(reverse(78220351)) #6302287 is the wrong ans i received before
+  #print(reverse(384427106)) #7724483.000000001 is the wrong ans i received before
+  """
