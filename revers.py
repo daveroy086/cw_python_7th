@@ -10,7 +10,7 @@ def countLeadingZeros(aFloat, length):
         aCounter += 1
     return aCounter
 
-def reverse(aNumber):
+def revers(aNumber):
     print("aNumber is ", aNumber)
 
     """Returns aNumber with all digits reversed. Assume positive aNumber."""
@@ -47,9 +47,9 @@ def reverse(aNumber):
 
     return ((returnedNumber * 10) +firstDigit)
 
-#print(reverse(1234))#, 4321)
-#print(reverse(12045))#, 78901)
-print(reverse(1020))#, 201)
-print(" the ans is ", reverse(1020))#, 201)
-print(reverse(1001))#, 1001)
-print(reverse(1010))#, he says 101 is ok)
+#print(revers(1234))#, 4321)
+#print(revere(12045))#, 78901)
+print(revers(1020))#, 201)
+print(" the ans is ", revers(1020))#, 201)
+print(revers(1001))#, 1001)
+print(revers(1010))#, he says 101 is ok)
